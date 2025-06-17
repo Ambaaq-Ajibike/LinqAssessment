@@ -31,7 +31,7 @@ dotnet build
 dotnet run --project LinqAssessment.API
 ```
 
-The API will be available at `https://localhost:5001` and `http://localhost:5000`
+The API will be available at `https://localhost:7027` and `http://localhost:5200`
 
 ## API Endpoints
 
