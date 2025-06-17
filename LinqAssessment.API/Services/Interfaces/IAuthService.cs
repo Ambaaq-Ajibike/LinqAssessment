@@ -1,6 +1,6 @@
 using LinqAssessment.API.DTOs;
 
-namespace LinqAssessment.API.Services;
+namespace LinqAssessment.API.Services.Interfaces;
 
 public interface IAuthService
 {

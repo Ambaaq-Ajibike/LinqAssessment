@@ -1,5 +1,5 @@
 using LinqAssessment.API.DTOs;
-using LinqAssessment.API.Services;
+using LinqAssessment.API.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,14 +8,9 @@ namespace LinqAssessment.API.Controllers;
 [Authorize]
 [ApiController]
 [Route("api/[controller]")]
-public class RouteController : ControllerBase
+public class RouteController(IRouteService routeService) : ControllerBase
 {
-    private readonly IRouteService _routeService;
-
-    public RouteController(IRouteService routeService)
-    {
-        _routeService = routeService;
-    }
+    private readonly IRouteService _routeService = routeService;
 
     [HttpGet("minimize-exchanges")]
     public async Task<ActionResult<List<JourneyDto>>> GetRoutesWithMinExchanges(

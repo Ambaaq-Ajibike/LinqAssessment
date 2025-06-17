@@ -3,14 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LinqAssessment.API.Data;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
-
-    public DbSet<LinqAssessment.API.Models.Route> Routes { get; set; }
+    public DbSet<Models.Route> Routes { get; set; }
     public DbSet<Flight> Flights { get; set; }
     public DbSet<User> Users { get; set; }
 
@@ -18,7 +13,7 @@ public class ApplicationDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<LinqAssessment.API.Models.Route>()
+        modelBuilder.Entity<Models.Route>()
             .HasMany(r => r.Flights)
             .WithOne(f => f.Route)
             .HasForeignKey(f => f.RouteId)

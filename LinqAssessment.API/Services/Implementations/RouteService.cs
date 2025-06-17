@@ -1,19 +1,13 @@
 using LinqAssessment.API.Data;
 using LinqAssessment.API.DTOs;
 using LinqAssessment.API.Models;
+using LinqAssessment.API.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace LinqAssessment.API.Services;
+namespace LinqAssessment.API.Services.Implementations;
 
-public class RouteService : IRouteService
+public class RouteService(ApplicationDbContext _context) : IRouteService
 {
-    private readonly ApplicationDbContext _context;
-
-    public RouteService(ApplicationDbContext context)
-    {
-        _context = context;
-    }
-
     public async Task<List<JourneyDto>> GetRoutesWithMinExchangesAsync(string origin, string destination, bool ascending = true)
     {
         var routes = await FindAllPossibleRoutesAsync(origin, destination);
@@ -152,7 +146,7 @@ public class RouteService : IRouteService
         {
             if (current == destination)
             {
-                routes.Add(new List<Flight>(currentPath));
+                routes.Add([.. currentPath]);
                 return;
             }
 

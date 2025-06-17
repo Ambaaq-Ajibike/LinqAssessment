@@ -1,5 +1,5 @@
 using LinqAssessment.API.DTOs;
-using LinqAssessment.API.Services;
+using LinqAssessment.API.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

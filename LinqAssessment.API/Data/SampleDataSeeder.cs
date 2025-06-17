@@ -10,7 +10,7 @@ public static class SampleDataSeeder
             return;
 
         // Add sample routes
-        var routes = new List<LinqAssessment.API.Models.Route>
+        var routes = new List<Models.Route>
         {
             new() { RouteId = "A_B", From = "A", To = "B", Duration = 5 },
             new() { RouteId = "B_C", From = "B", To = "C", Duration = 8 },

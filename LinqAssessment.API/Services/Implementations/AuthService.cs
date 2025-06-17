@@ -4,22 +4,14 @@ using System.Text;
 using LinqAssessment.API.Data;
 using LinqAssessment.API.DTOs;
 using LinqAssessment.API.Models;
+using LinqAssessment.API.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
-namespace LinqAssessment.API.Services;
+namespace LinqAssessment.API.Services.Implementations;
 
-public class AuthService : IAuthService
+public class AuthService(ApplicationDbContext _context, IConfiguration _configuration) : IAuthService
 {
-    private readonly ApplicationDbContext _context;
-    private readonly IConfiguration _configuration;
-
-    public AuthService(ApplicationDbContext context, IConfiguration configuration)
-    {
-        _context = context;
-        _configuration = configuration;
-    }
-
     public async Task<AuthResponseDto> RegisterAsync(RegisterDto registerDto)
     {
         if (await _context.Users.AnyAsync(u => u.Username == registerDto.Username))
@@ -60,8 +52,6 @@ public class AuthService : IAuthService
 
     public Task LogoutAsync()
     {
-        // In a real application, you might want to invalidate the token
-        // or implement a token blacklist
         return Task.CompletedTask;
     }
 
