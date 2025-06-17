@@ -14,7 +14,7 @@ This is a .NET Web API solution that provides functionality for finding optimal 
 
 ## Prerequisites
 
-- .NET 8p9.0 SDK or later
+- .NET 9.0 SDK 
 - SQL Server (or SQL Server Express)
 - Visual Studio 2022 or VS Code
 

@@ -8,9 +8,8 @@ namespace LinqAssessment.API.Controllers;
 [Authorize]
 [ApiController]
 [Route("api/[controller]")]
-public class RouteController(IRouteService routeService) : ControllerBase
+public class RouteController(IRouteService _routeService) : ControllerBase
 {
-    private readonly IRouteService _routeService = routeService;
 
     [HttpGet("minimize-exchanges")]
     public async Task<ActionResult<List<JourneyDto>>> GetRoutesWithMinExchanges(
